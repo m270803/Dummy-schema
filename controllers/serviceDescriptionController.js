@@ -1,0 +1,34 @@
+const ServiceDescription = require('../models/About/ServiceDescription');
+
+// Create a new service description
+const createServiceDescription = async (req, res) => {
+  const { username, serviceName, description } = req.body;
+
+  try {
+    const newServiceDescription = new ServiceDescription({ username, serviceName, description });
+    await newServiceDescription.save();
+    res.status(201).json(newServiceDescription);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Get service descriptions by username
+const getServiceDescriptionsByUsername = async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const serviceDescriptions = await ServiceDescription.find({ username });
+    if (!serviceDescriptions.length) {
+      return res.status(404).json({ message: 'Service descriptions not found' });
+    }
+    res.json(serviceDescriptions);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  createServiceDescription,
+  getServiceDescriptionsByUsername
+};
