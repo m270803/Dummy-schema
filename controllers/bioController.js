@@ -1,4 +1,4 @@
-const Bio = require('../models/Bio');
+const Bio = require('../models/About/Bio');
 
 const createOrUpdateBio = async (req, res) => {
   const { username, bio } = req.body;

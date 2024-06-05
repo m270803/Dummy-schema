@@ -1,4 +1,4 @@
-const Testimonials = require('../models/About/Testimonials');
+const Testimonials = require('../models/Testimonials/Testimonials');
 
 // Create a new work
 const createWork = async (req, res) => {

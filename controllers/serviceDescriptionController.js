@@ -1,4 +1,4 @@
-const ServiceDescription = require('../models/About/ServiceDescription');
+const ServiceDescription = require('../models/Services/ServiceDescription');
 
 // Create a new service description
 const createServiceDescription = async (req, res) => {

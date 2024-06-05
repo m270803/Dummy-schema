@@ -1,4 +1,4 @@
-const ProfessionalExperience = require('../models/ProfessionalExperience');
+const ProfessionalExperience = require('../models/About/ProfessionalExperience');
 
 const createProfessionalExperience = async (req, res) => {
   const { username, profession, organization, location, startDate, endDate, description } = req.body;

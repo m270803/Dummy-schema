@@ -1,4 +1,4 @@
-const Achievement = require('../models/Achievement');
+const Achievement = require('../models/About/Achievement');
 
 const createAchievement = async (req, res) => {
   const { username, achievement, date, description } = req.body;
