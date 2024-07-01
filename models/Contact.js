@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Define Contact schema
 const contactSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true, ref: 'User' },
   email: { type: String },
   instagram: { type: String },
   linkedIn: { type: String },

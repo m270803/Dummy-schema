@@ -8,4 +8,7 @@ router.post('/', worksController.createWork);
 // Route for getting works by username
 router.get('/:username', worksController.getWorksByUsername);
 
+// update Work
+router.post('/:username', worksController.updateWork);
+
 module.exports = router;

@@ -28,7 +28,29 @@ const getServiceDescriptionsByUsername = async (req, res) => {
   }
 };
 
+// Update a service description
+const updateServiceDescription = async (req, res) => {
+  const { id, serviceName, description } = req.body;
+
+  try {
+    const updatedServiceDescription = await ServiceDescription.findByIdAndUpdate(
+      id,
+      { serviceName, description },
+      { new: true }
+    );
+
+    if (!updatedServiceDescription) {
+      return res.status(404).json({ message: 'Service description not found' });
+    }
+
+    res.json(updatedServiceDescription);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createServiceDescription,
-  getServiceDescriptionsByUsername
+  getServiceDescriptionsByUsername,
+  updateServiceDescription
 };

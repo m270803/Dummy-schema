@@ -42,7 +42,7 @@ const editTitle = async (req, res) => {
 };
 
 // Remove a specific title
-const removeTitle = async (req, res) => {
+const removeTitle = async (req, res) => { // we are only getting a title id so find the title by id only
   const { username, titleId } = req.body;
 
   try {

@@ -8,4 +8,7 @@ router.post('/', serviceDescriptionController.createServiceDescription);
 // Route for getting service descriptions by username
 router.get('/:username', serviceDescriptionController.getServiceDescriptionsByUsername);
 
+//update Service Description
+router.post('/:username', serviceDescriptionController.updateServiceDescription);
+
 module.exports = router;

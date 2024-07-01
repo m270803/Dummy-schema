@@ -8,4 +8,7 @@ router.post('/', TestimonialsController.createWork);
 // Route for getting Testimonials by username
 router.get('/:username', TestimonialsController.getTestimonialsByUsername);
 
+// updateTestimonial
+router.put('/:username', TestimonialsController.updateTestimonial);
+
 module.exports = router;

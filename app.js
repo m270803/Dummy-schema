@@ -11,6 +11,11 @@ const serviceDescriptionRoutes = require('./routes/serviceDescriptionRoutes');
 const testimonialsRoutes = require('./routes/testimonialsRoutes');
 const worksRoutes = require('./routes/worksRoutes');
 const contactRoutes = require('./routes/contactRoutes');
+const profileRoutes = require('./routes/profileRoutes');
+const resumeRoutes = require('./routes/resumeRoutes');
+const projectsRoutes = require('./routes/projectsRoutes');
+const firstnameRoutes = require('./routes/firstnameRoutes');
+const lastnameRoutes = require('./routes/lastnameRoutes');
 
 const app = express();
 
@@ -24,16 +29,21 @@ app.use(express.json());
 app.use('/api/Hero/users', userRoutes);
 app.use('/api/Hero/titles', titleRoutes);
 app.use('/api/Hero/introduction', introductionRoutes);
+app.use('/api/Hero/profilepic', profileRoutes);
+app.use('/api/Hero/firstname', firstnameRoutes);
+app.use('/api/Hero/lastname', lastnameRoutes);
 app.use('/api/About/bio', bioRoutes);
 app.use('/api/About/skills', skillsRoutes);
 app.use('/api/About/professional-experience', professionalExperienceRoutes);
 app.use('/api/About/achievements', achievementRoutes);
+app.use('/api/About/resume', resumeRoutes);
 app.use('/api/Services/service-description', serviceDescriptionRoutes);
-app.use('/api/Services/works', worksRoutes); 
+app.use('/api/Services/works', worksRoutes);
+app.use('/api/work/projects', projectsRoutes);
 app.use('/api/testimonials', testimonialsRoutes); 
-app.use('/api/contact', contactRoutes); // Include new route for contact
+app.use('/api/contact', contactRoutes); 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

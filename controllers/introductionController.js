@@ -1,5 +1,6 @@
 const Introduction = require('../models/Hero/Introduction');
 
+// Create a new introduction
 const createIntroduction = async (req, res) => {
   const { username, introduction } = req.body;
 
@@ -12,6 +13,7 @@ const createIntroduction = async (req, res) => {
   }
 };
 
+// Get introduction by username
 const getIntroductionByUsername = async (req, res) => {
   const { username } = req.params;
 
@@ -26,7 +28,29 @@ const getIntroductionByUsername = async (req, res) => {
   }
 };
 
+// Update introduction
+const updateIntroduction = async (req, res) => {
+  const { username, introduction } = req.body;
+
+  try {
+    const updatedIntroduction = await Introduction.findOneAndUpdate(
+      { username },
+      { introduction },
+      { new: true }
+    );
+
+    if (!updatedIntroduction) {
+      return res.status(404).json({ message: 'Introduction not found' });
+    }
+
+    res.json(updatedIntroduction);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createIntroduction,
-  getIntroductionByUsername
+  getIntroductionByUsername,
+  updateIntroduction
 };

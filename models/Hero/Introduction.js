@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Define Introduction schema
 const introductionSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String, required: true, ref: 'User' },
   introduction: { type: String, default: null }
 });
 

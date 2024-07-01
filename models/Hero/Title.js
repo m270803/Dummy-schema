@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 // Define subdocument schema for individual titles
 const individualTitleSchema = new mongoose.Schema({
-  title: { type: String, required: true }
+  title: { type: String, required: true, ref: 'User' }
 }, { _id: true });
 
 // Define main Title schema

@@ -1,11 +1,11 @@
-const Works = require('../models/Services/Works');
+const Works = require('../models/Work/Projects'); // Adjust the path to your Works model
 
 // Create a new work
 const createWork = async (req, res) => {
-  const { username, serviceName, photo, description } = req.body;
+  const { username, projectname, skill, photo, description } = req.body;
 
   try {
-    const newWork = new Works({ username, serviceName, photo, description });
+    const newWork = new Works({ username, projectname, skill, photo, description });
     await newWork.save();
     res.status(201).json(newWork);
   } catch (error) {
@@ -30,12 +30,12 @@ const getWorksByUsername = async (req, res) => {
 
 // Update a work
 const updateWork = async (req, res) => {
-  const { id, serviceName, photo, description } = req.body;
+  const { id, projectname, skill, photo, description } = req.body;
 
   try {
     const updatedWork = await Works.findByIdAndUpdate(
       id,
-      { serviceName, photo, description },
+      { projectname, skill, photo, description },
       { new: true }
     );
 
@@ -54,4 +54,3 @@ module.exports = {
   getWorksByUsername,
   updateWork
 };
-

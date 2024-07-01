@@ -1,10 +1,20 @@
 const ProfessionalExperience = require('../models/About/ProfessionalExperience');
 
 const createProfessionalExperience = async (req, res) => {
-  const { username, profession, organization, location, startDate, endDate, description } = req.body;
+  const { username, profession, organization, location, startDate, endDate, description, workfromhome, currentlyWorkinghere } = req.body;
 
   try {
-    const newExperience = new ProfessionalExperience({ username, profession, organization, location, startDate, endDate, description });
+    const newExperience = new ProfessionalExperience({ 
+      username, 
+      profession, 
+      organization, 
+      location, 
+      startDate, 
+      endDate, 
+      description, 
+      workfromhome, 
+      currentlyWorkinghere 
+    });
     await newExperience.save();
     res.status(201).json(newExperience);
   } catch (error) {
@@ -13,12 +23,22 @@ const createProfessionalExperience = async (req, res) => {
 };
 
 const updateProfessionalExperience = async (req, res) => {
-  const { id, profession, organization, location, startDate, endDate, description } = req.body;
+  const { id } = req.params;
+  const { profession, organization, location, startDate, endDate, description, workfromhome, currentlyWorkinghere } = req.body;
 
   try {
     const updatedExperience = await ProfessionalExperience.findByIdAndUpdate(
       id,
-      { profession, organization, location, startDate, endDate, description },
+      { 
+        profession, 
+        organization, 
+        location, 
+        startDate, 
+        endDate, 
+        description, 
+        workfromhome, 
+        currentlyWorkinghere 
+      },
       { new: true }
     );
 
